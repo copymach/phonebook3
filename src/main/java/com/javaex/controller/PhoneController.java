@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -143,6 +144,64 @@ public class PhoneController {
 	} // update 종료
 
 	
+	@RequestMapping(value = "/test", method = { RequestMethod.GET, RequestMethod.POST })
+	public String test (@RequestParam(value="name") String name , 
+						@RequestParam(value="age", required=false, defaultValue = "-1") int age) {
+		System.out.println("PhoneController > test() ");
+		
+//		http://localhost:8088/phonebook3/phone/test?name=john&age=20
+//		http://localhost:8088/phonebook3/phone/test?name=john
+//		파라미트가 덜오면 에러 404 bed request -> @RequestParam("age") int age) 
+//		
+		
+//		@RequestParam(value="age", required=false, defaultValue = "-1") int age 으로 없는 age 파라미터값을 -1로 변경
+		
+//		값 잘 받는지 확인
+		System.out.println("스프링이 가져온 name age " + name + age);
+
+//		상대경로로 리턴
+		return "/WEB-INF/views/writeForm.jsp";
+	} // test 종료
 	
 	
+	
+//	주소를 변수로 쓰기 
+	@RequestMapping(value = "/{num}/view/{no}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String view (@PathVariable("no") int no , @PathVariable("num") int num) {
+		System.out.println("PhoneController > view() test ");
+		
+//		값 잘 받는지 확인
+		System.out.println("num 스프링이 가져온 no 번 글" + no);
+
+//		상대경로로 리턴
+		return "/WEB-INF/views/writeForm.jsp";
+	} // view 삭제 할때 숫자 하나만 넘기기도 할때 쓰기 좋다
+	
+
+	@RequestMapping(value = "/view2", method = { RequestMethod.GET, RequestMethod.POST })
+	public String view2 (@RequestParam(value="name") String name ,
+						@RequestParam(value="age", required=false, defaultValue = "-1") int age) {
+		System.out.println("PhoneController > view() test ");
+		
+//		값 잘 받는지 확인
+		System.out.println("스프링이 가져온 name age " + name + age);
+
+//		상대경로로 리턴
+		return "/WEB-INF/views/writeForm.jsp";
+	} // test 종료
+
+	
+	@RequestMapping(value = "/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String blog (@PathVariable(value="id") String id) {
+		
+		System.out.println(id+" 의 블로그 입니다.");
+//		http://localhost:8088/phonebook3/phone/aaa 
+//		aaa의 블로그입니다.
+
+//		상대경로로 리턴
+		return "/WEB-INF/views/writeForm.jsp";
+	} // test 종료
+
+	
+
 }  // The end of this PhoneController
