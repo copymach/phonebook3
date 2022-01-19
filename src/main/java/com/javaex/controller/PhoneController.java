@@ -45,8 +45,9 @@ public class PhoneController {
 //		리다이렉트 - 루트 /phone 빼먹지 말자  
 //		return "redirect:/phone/list";
 
-//		상대경로로 리턴
+//		리다이렉트는 jsp 가필요없어서 뷰 리졸브를 거칠 필요가 없다 디스패처서블릿에서 바로 클라로 피드백
 		return "redirect:list";
+		
 	} // write 종료
 
 	
@@ -85,7 +86,7 @@ public class PhoneController {
 		model.addAttribute("personList", personList);
 
 		// jsp 정보를 리턴한다 (view - 뷰)
-		return "/WEB-INF/views/list.jsp";
+		return "list";
 
 	} // list 종료
 
@@ -106,9 +107,11 @@ public class PhoneController {
 		model.addAttribute("personVo", personVo);
 		
 //		return "redirect:/phone/updateForm";
-		return "/WEB-INF/views/updateForm.jsp";
+		return "updateForm";
+		
 	} // updateForm 종료
 
+	
 //	디스패쳐 서블릿에게 personVo를 묶어오라는 코드
 	@RequestMapping(value = "/update", method = { RequestMethod.GET, RequestMethod.POST })
 	public String update(@ModelAttribute PersonVo personVo) {
@@ -124,7 +127,7 @@ public class PhoneController {
 //		리다이렉트 - 루트 /phone 빼먹지 말자  
 //		return "redirect:/phone/list";
 
-//		상대경로로 리턴
+//		리다이렉트는 jsp 가필요없어서 뷰 리졸브를 거칠 필요가 없다 디스패처서블릿에서 바로 클라로 피드백
 		return "redirect:list";
 	} // update 종료
 
@@ -160,7 +163,7 @@ public class PhoneController {
 		System.out.println("스프링이 가져온 name age " + name + age);
 
 //		상대경로로 리턴
-		return "/WEB-INF/views/writeForm.jsp";
+		return "writeForm";
 	} // test 종료
 	
 	
@@ -174,10 +177,11 @@ public class PhoneController {
 		System.out.println("num 스프링이 가져온 no 번 글" + no);
 
 //		상대경로로 리턴
-		return "/WEB-INF/views/writeForm.jsp";
+		return "writeForm";
 	} // view 삭제 할때 숫자 하나만 넘기기도 할때 쓰기 좋다
 	
 
+//	없는 파라미터 처리 해보기
 	@RequestMapping(value = "/view2", method = { RequestMethod.GET, RequestMethod.POST })
 	public String view2 (@RequestParam(value="name") String name ,
 						@RequestParam(value="age", required=false, defaultValue = "-1") int age) {
@@ -187,7 +191,7 @@ public class PhoneController {
 		System.out.println("스프링이 가져온 name age " + name + age);
 
 //		상대경로로 리턴
-		return "/WEB-INF/views/writeForm.jsp";
+		return "writeForm";
 	} // test 종료
 
 	
@@ -199,7 +203,7 @@ public class PhoneController {
 //		aaa의 블로그입니다.
 
 //		상대경로로 리턴
-		return "/WEB-INF/views/writeForm.jsp";
+		return "writeForm";
 	} // test 종료
 
 	

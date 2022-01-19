@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>폰북3 PhoneBook3</title>
 </head>
 <body>
 
@@ -14,7 +14,7 @@
 	<P>
 		<a href="http://localhost:8088/phonebook3/phone/writeForm">연락처 추가하기(절대경로 absolute path)</a> <br> <a href="/phonebook3/phone/writeForm">연락처 추가하기(상대경로 relative path)</a>
 	</p>
-	<p>model2 방식으로 만든 전화번호부</p>
+	<p>model2 방식으로 만든 전화번호부3</p>
 	<p>입력한 정보 내역입니다.</p>
 	<p>최근에 입력한 순서대로 보여줍니다.</p>
 
